@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Coding & Scratch Service Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4A0E4E, #00796B);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h2.section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #4A0E4E;
+            font-size: 1.8rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-tag {
+            background-color: #E0F2F1;
+            color: #004D40;
+            font-size: 0.85rem;
+            font-weight: bold;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .price {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #00796B;
+            margin: 1.5rem 0;
+        }
+
+        .order-btn {
+            background-color: #00796B;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        .order-btn:hover {
+            background-color: #004D40;
+        }
+
+        /* --- Custom Popup Card Style --- */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .popup-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup-overlay.active .popup-card {
+            transform: scale(1);
+        }
+
+        .popup-card h2 {
+            color: #4A0E4E;
+            margin-bottom: 0.5rem;
+            font-size: 1.6rem;
+        }
+
+        .wa-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #25D366;
+            background: #E8F5E9;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 1rem 0;
+            letter-spacing: 1px;
+        }
+
+        .popup-card p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-btn {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.6rem 2rem;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>My Coding & Scratch Service Store</h1>
+        <p>Order custom built HTML, CSS, and Scratch projects directly from me!</p>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Available Services</h2>
+
+        <div class="services-grid">
+            <!-- HTML Card -->
+            <div class="card">
+                <div>
+                    <span class="service-tag">HTML Service</span>
+                    <h3>Custom HTML Website Template</h3>
+                </div>
+                <div>
+                    <div class="price">1000 PKR</div>
+                    <button class="order-btn" onclick="showPopup('Custom HTML Website Template')">Order Now</button>
+                </div>
+            </div>
+
+            <!-- CSS Card -->
+            <div class="card">
+                <div>
+                    <span class="service-tag">CSS Service</span>
+                    <h3>Custom CSS Styling Template</h3>
+                </div>
+                <div>
+                    <div class="price">1000 PKR</div>
+                    <button class="order-btn" onclick="showPopup('Custom CSS Styling Template')">Order Now</button>
+                </div>
+            </div>
+
+            <!-- Scratch Card -->
+            <div class="card">
+                <div>
+                    <span class="service-tag">Scratch Custom</span>
+                    <h3>Full Scratch Project Design</h3>
+                </div>
+                <div>
+                    <div class="price">100 - 1000 PKR</div>
+                    <button class="order-btn" onclick="showPopup('Full Scratch Project Design')">Order Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- On-Screen Popup UI Element -->
+    <div class="popup-overlay" id="waPopup">
+        <div class="popup-card">
+            <h2>Place Your Order</h2>
+            <p>You chosen item: <strong id="selectedService" style="color:#00796B;">Service</strong></p>
+            <p>Please save and message our official WhatsApp phone address to finalize details:</p>
+            <div class="wa-number">0315 5858152</div>
+            <p style="font-size: 0.85rem; color:#777;">Send payment via JazzCash once your order is confirmed.</p>
+            <button class="close-btn" onclick="hidePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function showPopup(serviceName) {
+            document.getElementById('selectedService').innerText = serviceName;
+            document.getElementById('waPopup').classList.add('active');
+        }
+
+        function hidePopup() {
+            document.getElementById('waPopup').classList.remove('active');
+        }
+
+        // Close popup if background overlay is clicked
+        document.getElementById('waPopup').addEventListener('click', function (e) {
+            if (e.target === this) {
+                hidePopup();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
